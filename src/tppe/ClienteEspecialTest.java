@@ -23,8 +23,8 @@ public class ClienteEspecialTest {
 	@Test
 		public void calculaFreteEspecial() {
 			Cliente cliente = new ClienteEspecial("Joao", "Norte", true); 
-				float freteComDesconto = cliente.calcularFrete(100);
-				assertEquals(70.0f,freteComDesconto,0.01);
+				float freteComDesconto = cliente.calcularFrete(45.0f);
+				assertEquals(31.5f,freteComDesconto,0.01);
 			
 		}
 	
