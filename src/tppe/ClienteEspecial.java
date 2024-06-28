@@ -6,9 +6,9 @@ public class ClienteEspecial extends Cliente{
 		super (nome,endereco,interior);
 	}
 	
-	public float calcularDesconto(float valorTotal, boolean usandoCartaoLoja) {
+	public float calcularDesconto(float valorTotal, boolean usandoCartaoDaLoja) {
 		float desconto = valorTotal * 0.10f;
-		if(usandoCartaoLoja == true) {
+		if(usandoCartaoDaLoja == true) {
 			desconto += valorTotal *0.10f;
 		}
 		return valorTotal - desconto;

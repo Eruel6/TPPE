@@ -12,7 +12,7 @@ public abstract class Cliente {
 		this.interior = interior;
 	}
 	
-	public abstract float calcularDesconto(float valorTotal, boolean usandoCartaoLoja);
+	public abstract float calcularDesconto(float valorTotal, boolean usandoCartaoDaLoja);
 
     public abstract float calcularFrete(float valorFreteBase);
 	

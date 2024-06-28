@@ -10,7 +10,11 @@ public class ClientePrime extends Cliente{
 	}
 	
 	public float calcularDesconto(float valorTotal, boolean usandoCartaoDaLoja){
-		return valorTotal;
+		float desconto = valorTotal * 0.10f;
+		if(usandoCartaoDaLoja == true) {
+			desconto += valorTotal *0.10f;
+		}
+		return valorTotal - desconto;
 	}
 	
 	public float calcularFrete (float valorFreteBase) {

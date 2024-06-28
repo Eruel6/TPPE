@@ -1,7 +1,9 @@
-package tppe;
+package testes;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+
+import tppe.Produto;
 
 public class TesteProduto {
     @Test

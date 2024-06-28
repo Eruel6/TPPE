@@ -1,20 +1,23 @@
-package tppe;
+package testes;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import tppe.Cliente;
+import tppe.ClientePrime;
+
 public class ClientePrimeTest {
 
 	@Test
     public void deveCadastrarClientePrime() {
-        Cliente cliente = new ClientePrime("Pedro", "Sudeste", true);
+        Cliente cliente = new ClientePrime("Pedro", "BA", true);
         assertNotNull(cliente);
     }
 	
 	@Test
     public void clientePrimeDeveAcumularEUsarCashback() {
-        ClientePrime cliente = new ClientePrime("Pedro", "Sudeste", true);
+        ClientePrime cliente = new ClientePrime("Pedro", "GO", true);
         cliente.acumularCashback(100.0f, false);
         assertEquals(3.0f, cliente.getSaldoCashback(), 0.01);//primeira compra sem cartao
 
