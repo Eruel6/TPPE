@@ -28,7 +28,7 @@ public abstract class Cliente {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public boolean isInterior() {
+	public boolean getInterior() {
 		return interior;
 	}
 	public void setInterior(boolean interior) {
