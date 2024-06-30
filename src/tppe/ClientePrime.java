@@ -17,7 +17,7 @@ public class ClientePrime extends Cliente{
 		return desconto;
 	}
 	
-	public float calcularFrete (float valorFreteBase) {
+	public float getFrete (String estado, boolean interior) {
 		return 0.0f;
 	}
 	

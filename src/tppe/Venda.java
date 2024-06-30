@@ -5,16 +5,15 @@ public class Venda {
 	private Cliente cliente;
 	private Produto produto;
 	private int quantidade;
-	private float valorFreteBase;
 	private String data;
 	
-	public Venda(Cliente cliente, Produto produto, int quantidade, float valorFreteBase, String data) {
+	public Venda(Cliente cliente, Produto produto, int quantidade, String data) {
 		this.cliente = cliente;
 		this.produto = produto;
 		this.quantidade = quantidade;
-		this.valorFreteBase = valorFreteBase;
 		this.data = data;
 	}
+	
 	
 	public Cliente getCliente() {
 		return cliente;
@@ -40,14 +39,6 @@ public class Venda {
 		this.quantidade = quantidade;
 	}
 
-	public float getValorFreteBase() {
-		return valorFreteBase;
-	}
-
-	public void setValorFreteBase(float valorFreteBase) {
-		this.valorFreteBase = valorFreteBase;
-	}
-
 	public String getData() {
 		return data;
 	}
@@ -68,17 +59,17 @@ public class Venda {
         //venda para diferentes tipos de clientes
         if (this.cliente instanceof ClientePrime) {
         	desconto = this.cliente.calcularDesconto(valorTotalProdutos,true);
-        	frete = this.cliente.calcularFrete(this.valorFreteBase);
+        	frete = this.cliente.getFrete(this.cliente.getEstado(),this.cliente.getInterior());
         	((ClientePrime) this.cliente).acumularCashback(valorTotalProdutos, true);
         	((ClientePrime) this.cliente).usarCashback(valorTotalProdutos);
         	
         }else if(this.cliente instanceof ClienteEspecial) {
         	desconto = this.cliente.calcularDesconto(valorTotalProdutos, true);
-        	frete = this.cliente.calcularFrete(this.valorFreteBase);
+        	frete = this.cliente.getFrete(this.cliente.getEstado(),this.cliente.getInterior());
         	
         }else {
         	desconto = this.cliente.calcularDesconto(valorTotalProdutos, false);
-        	frete = this.cliente.calcularFrete(this.valorFreteBase);
+        	frete = this.cliente.getFrete(this.cliente.getEstado(),this.cliente.getInterior());
         }
         
        

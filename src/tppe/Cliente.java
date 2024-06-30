@@ -13,8 +13,8 @@ public abstract class Cliente {
 	}
 	
 	public abstract float calcularDesconto(float valorTotal, boolean usandoCartaoDaLoja);
-
-    public abstract float calcularFrete(float valorFreteBase);
+    
+    public abstract float getFrete(String estado, boolean interior);
 	
 	public String getNome() {
 		return nome;

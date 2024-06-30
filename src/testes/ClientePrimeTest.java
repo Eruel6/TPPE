@@ -16,7 +16,7 @@ import tppe.ClientePrime;
 @RunWith(Parameterized.class)
 public class ClientePrimeTest {
 
-    @Parameters(name = "{index}: Test with nome={0}, estado={1}, interior={2}, valorTotal={3}, usandoCartaoDaLoja={4}, valorEsperadoDesconto={5}, valorFreteBase={6}, saldoEsperado={7}, cashbackUso={8}, saldoFinalEsperado={9}")
+    @Parameters(name = "{index}: Test with nome={0}, estado={1}, interior={2}, valorTotal={3}, usandoCartaoDaLoja={4}, valorEsperadoDesconto={5}, valorFreteEsperado={6}, saldoEsperado={7}, cashbackUso={8}, saldoFinalEsperado={9}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
             // Teste para cadastro de cliente, calcular desconto, calcular frete e acumular/usar cashback
@@ -32,19 +32,17 @@ public class ClientePrimeTest {
     private float valorTotal;
     private boolean usandoCartaoDaLoja;
     private float valorEsperadoDesconto;
-    private float valorFreteBase;
     private float saldoEsperado;
     private float cashbackUso;
     private float saldoFinalEsperado;
 
-    public ClientePrimeTest(String nome, String estado, boolean interior, float valorTotal, boolean usandoCartaoDaLoja, float valorEsperadoDesconto, float valorFreteBase, float saldoEsperado, float cashbackUso, float saldoFinalEsperado) {
+    public ClientePrimeTest(String nome, String estado, boolean interior, float valorTotal, boolean usandoCartaoDaLoja, float valorEsperadoDesconto, float valorFreteEsperado, float saldoEsperado, float cashbackUso, float saldoFinalEsperado) {
         this.nome = nome;
         this.estado = estado;
         this.interior = interior;
         this.valorTotal = valorTotal;
         this.usandoCartaoDaLoja = usandoCartaoDaLoja;
         this.valorEsperadoDesconto = valorEsperadoDesconto;
-        this.valorFreteBase = valorFreteBase;
         this.saldoEsperado = saldoEsperado;
         this.cashbackUso = cashbackUso;
         this.saldoFinalEsperado = saldoFinalEsperado;
@@ -66,7 +64,7 @@ public class ClientePrimeTest {
     @Test
     public void deveCalcularFreteClientePrime() {
         Cliente cliente = new ClientePrime(nome, estado, interior);
-        float freteComDesconto = cliente.calcularFrete(valorFreteBase);
+        float freteComDesconto = cliente.getFrete(cliente.getEstado(),cliente.getInterior());
         assertEquals(0.0f, freteComDesconto, 0.01);
     }
 

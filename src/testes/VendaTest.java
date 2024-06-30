@@ -26,39 +26,37 @@ public class VendaTest {
         Produto produto2 = new Produto(02, "Produto 2", 200.0f,"Metro");
 
         return Arrays.asList(new Object[][] {
-            { new ClientePrime("Pedro", "Distrito Federal", true), produto1, 2, 10.0f, "2023-06-28", 196.0f },
-            { new ClienteEspecial("Maria", "Sudeste", false), produto2, 1, 15.0f, "2023-06-28", 202.5f },
-            { new ClientePadrao("Joao", "Norte", true), produto1, 3, 20.0f, "2023-06-28", 368.0f },
-            { new ClientePrime("Ana", "Nordeste", true), produto2, 2, 10.0f, "2023-06-28", 384.0f },
-            { new ClienteEspecial("Carlos", "Distrito Federal", false), produto1, 1, 5.0f, "2023-06-28", 101.5f },
-            { new ClientePadrao("Lucas", "Sul", false), produto2, 3, 25.0f, "2023-06-28", 721.0f }
+            { new ClientePrime("Pedro", "Distrito Federal", true), produto1, 2, "2023-06-28", 196.0f },
+            { new ClienteEspecial("Maria", "Sudeste", false), produto2, 1, "2023-06-28", 196.9f },
+            { new ClientePadrao("Joao", "Norte", true), produto1, 3, "2023-06-28", 373.0f },
+            { new ClientePrime("Ana", "Nordeste", true), produto2, 2, "2023-06-28", 384.0f },
+            { new ClienteEspecial("Carlos", "Distrito Federal", false), produto1, 1, "2023-06-28", 101.5f },
+            { new ClientePadrao("Lucas", "Sul", false), produto2, 3, "2023-06-28", 706.0f }
         });
     }
 
     private Cliente cliente;
     private Produto produto;
     private int quantidade;
-    private float valorFreteBase;
     private String data;
     private float valorTotalEsperado;
 
-    public VendaTest(Cliente cliente, Produto produto, int quantidade, float valorFreteBase, String data, float valorTotalEsperado) {
+    public VendaTest(Cliente cliente, Produto produto, int quantidade, String data, float valorTotalEsperado) {
         this.cliente = cliente;
         this.produto = produto;
         this.quantidade = quantidade;
-        this.valorFreteBase = valorFreteBase;
         this.data = data;
         this.valorTotalEsperado = valorTotalEsperado;
     }
 
     @Test
     public void testarVenda() {
-        Venda venda = new Venda(cliente, produto, quantidade, valorFreteBase, data);
+        Venda venda = new Venda(cliente, produto, quantidade, data);
         venda.realizarVenda();
 
         float valorTotalProdutos = produto.getValor() * quantidade;
         float desconto = cliente.calcularDesconto(valorTotalProdutos, cliente instanceof ClientePrime || cliente instanceof ClienteEspecial);
-        float frete = cliente.calcularFrete(valorFreteBase);
+        float frete = cliente.getFrete(cliente.getEstado(),cliente.getInterior());
         float ICMS = cliente.getEstado().equals("Distrito Federal") ? 0.18f : 0.12f;
         float impostoMunicipal = cliente.getEstado().equals("Distrito Federal") ? 0.0f : 0.04f;
         float valorUnitario = produto.getValor() * (1 + ICMS + impostoMunicipal);
