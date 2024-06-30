@@ -33,12 +33,8 @@ public class ClientePrime extends Cliente{
 		return saldoCashback;
 	}
 	
-	public void usarCashback(float valor) {
-        if (valor <= saldoCashback) {
+	public void usarCashback(float valor) {    
             saldoCashback -= valor;
-        } else {
-            throw new IllegalArgumentException("Saldo de cashback insuficiente.");
-        }
     }
 	
 }
