@@ -20,9 +20,9 @@ public class ClientePrimeTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
             // Teste para cadastro de cliente, calcular desconto, calcular frete e acumular/usar cashback
-            { "Pedro", "Sudeste", true, 100.0f, false, 90.0f, 0.0f, 3.0f, 0.0f, 3.0f },
-            { "Ana", "Nordeste", true, 200.0f, true, 160.0f, 0.0f, 10.0f, 7.0f, 3.0f },
-            { "Joao", "Norte", false, 150.0f, false, 135.0f, 0.0f, 4.5f, 2.0f, 2.5f }
+            { "Pedro", "Sudeste", true, 100.0f, false, 10.0f, 0.0f, 3.0f, 0.0f, 3.0f },
+            { "Ana", "Nordeste", true, 200.0f, true, 40.0f, 0.0f, 10.0f, 7.0f, 3.0f },
+            { "Joao", "Norte", false, 150.0f, false, 15.0f, 0.0f, 4.5f, 2.0f, 2.5f }
         });
     }
 

@@ -26,12 +26,12 @@ public class VendaTest {
         Produto produto2 = new Produto(02, "Produto 2", 200.0f,"Metro");
 
         return Arrays.asList(new Object[][] {
-            /*{ new ClientePrime("Pedro", "Distrito Federal", true), produto1, 2, 10.0f, "2023-06-28", 382.8f },
-            { new ClienteEspecial("Maria", "Sudeste", false), produto2, 1, 15.0f, "2023-06-28", 209.0f },
-            { new ClientePadrao("Joao", "Norte", true), produto1, 3, 20.0f, "2023-06-28", 344.0f },
-            { new ClientePrime("Ana", "Nordeste", true), produto2, 2, 10.0f, "2023-06-28", 718.4f },
-            { new ClienteEspecial("Carlos", "Distrito Federal", false), produto1, 1, 5.0f, "2023-06-28", 113.0f },*/
-            { new ClientePadrao("Lucas", "Sul", false), produto2, 3, 25.0f, "2023-06-28", 702.0f }
+            { new ClientePrime("Pedro", "Distrito Federal", true), produto1, 2, 10.0f, "2023-06-28", 196.0f },
+            { new ClienteEspecial("Maria", "Sudeste", false), produto2, 1, 15.0f, "2023-06-28", 202.5f },
+            { new ClientePadrao("Joao", "Norte", true), produto1, 3, 20.0f, "2023-06-28", 368.0f },
+            { new ClientePrime("Ana", "Nordeste", true), produto2, 2, 10.0f, "2023-06-28", 384.0f },
+            { new ClienteEspecial("Carlos", "Distrito Federal", false), produto1, 1, 5.0f, "2023-06-28", 101.5f },
+            { new ClientePadrao("Lucas", "Sul", false), produto2, 3, 25.0f, "2023-06-28", 721.0f }
         });
     }
 

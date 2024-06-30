@@ -7,7 +7,7 @@ public class ClientePadrao extends Cliente{
 	}
 	
 	public float calcularDesconto(float valorTotal, boolean usandoCartaoDaLoja){
-		return valorTotal;
+		return 0;
 	}
 	
 	public float calcularFrete (float valorFreteBase) {

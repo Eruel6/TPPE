@@ -20,9 +20,9 @@ public class ClientePadraoTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
             // Teste para cadastro de cliente, calcular desconto e calcular frete
-            { "Maria", "Sudeste", false, 100.0f, false, 100.0f, 45.0f, 45.0f },
-            { "Marcia", "Nordeste", false, 200.0f, true, 200.0f, 50.0f, 50.0f },
-            { "Joao", "Norte", true, 150.0f, false, 150.0f, 30.0f, 30.0f }
+            { "Maria", "Sudeste", false, 100.0f, false, 0.0f, 45.0f, 45.0f },
+            { "Marcia", "Nordeste", false, 200.0f, true, 0.0f, 50.0f, 50.0f },
+            { "Joao", "Norte", true, 150.0f, false, 0.0f, 30.0f, 30.0f }
         });
     }
 

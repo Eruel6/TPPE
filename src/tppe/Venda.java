@@ -82,9 +82,9 @@ public class Venda {
         }
         
        
-        float valorUnitario = this.produto.getValor() * ICMS;
-        valorUnitario += valorUnitario * impostoMunicipal;
-        valorTotalProdutosIP = valorUnitario * this.quantidade;
+        
+        float valorProdutoComImpostos = this.produto.getValor() + (this.produto.getValor() * ICMS )+ (this.produto.getValor() * impostoMunicipal);
+        valorTotalProdutosIP = valorProdutoComImpostos * this.quantidade;
         valorTotal = valorTotalProdutosIP - desconto + frete;
         
         System.out.println("------- Nota Fiscal ----------");
