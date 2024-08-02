@@ -20,7 +20,7 @@ import tppe.Venda;
 @RunWith(Parameterized.class)
 public class VendaTest {
 
-    @Parameters(name = "{index}: Test with cliente={0}, produto={1}, quantidade={2}, valorFreteBase={3}, data={4}, valorTotalEsperado={5}")
+    @Parameters(name = "{index}: Test with cliente={0}, produto={1}, quantidade={2}, data={3}, valorTotalEsperado={4}")
     public static Collection<Object[]> data() {
         Produto produto1 = new Produto(01, "Produto 1", 100.0f,"Kg");
         Produto produto2 = new Produto(02, "Produto 2", 200.0f,"Metro");

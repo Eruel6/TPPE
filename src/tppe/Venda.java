@@ -14,7 +14,6 @@ public class Venda {
 		this.data = data;
 	}
 	
-	
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -46,54 +45,64 @@ public class Venda {
 	public void setData(String data) {
 		this.data = data;
 	}
-	
-	public Venda realizarVenda() {
-        float valorTotalProdutosIP = 0;
-        float valorTotalProdutos = this.produto.getValor() * this.quantidade;
-        float desconto = 0.0f;
-        float frete = 0.0f;
-        float ICMS = this.cliente.getEstado().equals("Distrito Federal") ? 0.18f : 0.12f;
-        float impostoMunicipal = this.cliente.getEstado().equals("Distrito Federal") ? 0.0f : 0.04f;
-        float valorTotal = 0;
-        
-        //venda para diferentes tipos de clientes
-        if (this.cliente instanceof ClientePrime) {
-        	desconto = this.cliente.calcularDesconto(valorTotalProdutos,true);
-        	frete = this.cliente.getFrete(this.cliente.getEstado(),this.cliente.getInterior());
-        	((ClientePrime) this.cliente).acumularCashback(valorTotalProdutos, true);
-        	((ClientePrime) this.cliente).usarCashback(valorTotalProdutos);
-        	
-        }else if(this.cliente instanceof ClienteEspecial) {
-        	desconto = this.cliente.calcularDesconto(valorTotalProdutos, true);
-        	frete = this.cliente.getFrete(this.cliente.getEstado(),this.cliente.getInterior());
-        	
-        }else {
-        	desconto = this.cliente.calcularDesconto(valorTotalProdutos, false);
-        	frete = this.cliente.getFrete(this.cliente.getEstado(),this.cliente.getInterior());
-        }
-        
-       
-        
-        float valorProdutoComImpostos = this.produto.getValor() + (this.produto.getValor() * ICMS )+ (this.produto.getValor() * impostoMunicipal);
-        valorTotalProdutosIP = valorProdutoComImpostos * this.quantidade;
-        valorTotal = valorTotalProdutosIP - desconto + frete;
-        
-        System.out.println("------- Nota Fiscal ----------");
-        System.out.println("------- Valor Total dos Produtos sem imposto ----------");
-        System.out.println(this.produto.getCodigoItem()+" x "+this.quantidade+" --> "+valorTotalProdutos);
-        System.out.println("------- Valor Total dos Produtos com Imposto ----------");
-        System.out.println(this.produto.getCodigoItem()+" x "+this.quantidade+" --> "+valorTotalProdutosIP);
-        System.out.println("------- Impostoso Aplicados -----------");
-        System.out.println("ICMS total : "+ICMS*this.produto.getValor()*this.quantidade);
-        System.out.println("Imposto Municipal total : "+ impostoMunicipal*this.produto.getValor()*this.quantidade);
-        System.out.println("------- Descontos Aplicados ---------------");
-        System.out.println("Desconto: "+desconto);
-        System.out.println("------- Valor Frete -----------------");
-        System.out.println("Frete: "+frete);
-        System.out.println("------- Valor Total da Venda ----------");
-        System.out.println("Valor Total: "+valorTotal);
-        
-        return this;
-    }
+	    
+	    public Venda realizarVenda() {
+	        float valorTotalProdutos = this.produto.getValor() * this.quantidade;
+	        float desconto = calcularDesconto(valorTotalProdutos);
+	        float frete = calcularFrete();
+	        float valorTotalProdutosIP = calcularValorTotalProdutosComImpostos();
+	        float valorTotal = calcularValorTotalVenda(valorTotalProdutosIP, desconto, frete);
+	        
+	        imprimirNotaFiscal(valorTotalProdutos, valorTotalProdutosIP, desconto, frete, valorTotal);
+	        
+	        return this;
+	    }
+	    
+	    private float calcularDesconto(float valorTotalProdutos) {
+	        if (this.cliente instanceof ClientePrime) {
+	            ((ClientePrime) this.cliente).acumularCashback(valorTotalProdutos, true);
+	            ((ClientePrime) this.cliente).usarCashback(valorTotalProdutos);
+	            return this.cliente.calcularDesconto(valorTotalProdutos, true);
+	        } else if (this.cliente instanceof ClienteEspecial) {
+	            return this.cliente.calcularDesconto(valorTotalProdutos, true);
+	        } else {
+	            return this.cliente.calcularDesconto(valorTotalProdutos, false);
+	        }
+	    }
+	    
+	    private float calcularFrete() {
+	        return this.cliente.getFrete(this.cliente.getEstado(), this.cliente.getInterior());
+	    }
+	    
+	    private float calcularValorTotalProdutosComImpostos() {
+	        float ICMS = this.cliente.getEstado().equals("Distrito Federal") ? 0.18f : 0.12f;
+	        float impostoMunicipal = this.cliente.getEstado().equals("Distrito Federal") ? 0.0f : 0.04f;
+	        float valorProdutoComImpostos = this.produto.getValor() + (this.produto.getValor() * ICMS) + (this.produto.getValor() * impostoMunicipal);
+	        return valorProdutoComImpostos * this.quantidade;
+	    }
+	    
+	    private float calcularValorTotalVenda(float valorTotalProdutosIP, float desconto, float frete) {
+	        return valorTotalProdutosIP - desconto + frete;
+	    }
+	    
+	    private void imprimirNotaFiscal(float valorTotalProdutos, float valorTotalProdutosIP, float desconto, float frete, float valorTotal) {
+	        float ICMS = this.cliente.getEstado().equals("Distrito Federal") ? 0.18f : 0.12f;
+	        float impostoMunicipal = this.cliente.getEstado().equals("Distrito Federal") ? 0.0f : 0.04f;
+	        
+	        System.out.println("------- Nota Fiscal ----------");
+	        System.out.println("------- Valor Total dos Produtos sem imposto ----------");
+	        System.out.println(this.produto.getCodigoItem() + " x " + this.quantidade + " --> " + valorTotalProdutos);
+	        System.out.println("------- Valor Total dos Produtos com Imposto ----------");
+	        System.out.println(this.produto.getCodigoItem() + " x " + this.quantidade + " --> " + valorTotalProdutosIP);
+	        System.out.println("------- Impostos Aplicados -----------");
+	        System.out.println("ICMS total : " + ICMS * this.produto.getValor() * this.quantidade);
+	        System.out.println("Imposto Municipal total : " + impostoMunicipal * this.produto.getValor() * this.quantidade);
+	        System.out.println("------- Descontos Aplicados ---------------");
+	        System.out.println("Desconto: " + desconto);
+	        System.out.println("------- Valor Frete -----------------");
+	        System.out.println("Frete: " + frete);
+	        System.out.println("------- Valor Total da Venda ----------");
+	        System.out.println("Valor Total: " + valorTotal);
+	    }
 
 }
