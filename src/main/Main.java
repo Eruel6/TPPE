@@ -74,8 +74,7 @@ public class Main {
                     scanner.nextLine();
 
                     System.out.println("Digite a unidade do produto");
-                    String unidade = scanner.nextLine();
-                    Produto produto = new Produto(codigoProduto, descricaoProduto, valor, unidade);
+                    Produto produto = new Produto(new CodigoItem(codigoProduto), new DescricaoItem(descricaoProduto),new PrecoItem(valor), UnidadeMedida.UNIDADE);
                     produtos.add(produto);
                     System.out.println("Produto cadastrado com sucesso!");
                     break;

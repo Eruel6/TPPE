@@ -14,16 +14,19 @@ import tppe.Cliente;
 import tppe.ClienteEspecial;
 import tppe.ClientePadrao;
 import tppe.ClientePrime;
+import tppe.CodigoItem;
+import tppe.DescricaoItem;
 import tppe.Produto;
 import tppe.Venda;
+import tppe.*;
 
 @RunWith(Parameterized.class)
 public class VendaTest {
 
     @Parameters(name = "{index}: Test with cliente={0}, produto={1}, quantidade={2}, data={3}, valorTotalEsperado={4}")
     public static Collection<Object[]> data() {
-        Produto produto1 = new Produto(01, "Produto 1", 100.0f,"Kg");
-        Produto produto2 = new Produto(02, "Produto 2", 200.0f,"Metro");
+        Produto produto1 = new Produto(new CodigoItem(01),new DescricaoItem("Produto 01"),new PrecoItem(100.0f), UnidadeMedida.QUILOGRAMA);
+        Produto produto2 = new Produto(new CodigoItem(02),new DescricaoItem("Produto 02"),new PrecoItem(200.0f),UnidadeMedida.METRO);
 
         return Arrays.asList(new Object[][] {
             { new ClientePrime("Pedro", "Distrito Federal", true), produto1, 2, "2023-06-28", 196.0f },
@@ -54,12 +57,12 @@ public class VendaTest {
         Venda venda = new Venda(cliente, produto, quantidade, data);
         venda.realizarVenda();
 
-        float valorTotalProdutos = produto.getValor() * quantidade;
+        float valorTotalProdutos = produto.getPreco().getValor() * quantidade;
         float desconto = cliente.calcularDesconto(valorTotalProdutos, cliente instanceof ClientePrime || cliente instanceof ClienteEspecial);
         float frete = cliente.getFrete(cliente.getEstado(),cliente.getInterior());
         float ICMS = cliente.getEstado().equals("Distrito Federal") ? 0.18f : 0.12f;
         float impostoMunicipal = cliente.getEstado().equals("Distrito Federal") ? 0.0f : 0.04f;
-        float valorUnitario = produto.getValor() * (1 + ICMS + impostoMunicipal);
+        float valorUnitario = produto.getPreco().getValor() * (1 + ICMS + impostoMunicipal);
         float valorTotalProdutosIP = valorUnitario * quantidade;
         float valorTotal = valorTotalProdutosIP - desconto + frete;
 

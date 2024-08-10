@@ -2,12 +2,12 @@ package tppe;
 
 public class Produto {
 
-	private int codigoItem;
-	private String descricao;
-	private float valor;
-	private String unidade;
+	private CodigoItem codigoItem;
+	private DescricaoItem descricao;
+	private PrecoItem valor;
+	private UnidadeMedida unidade;
 	
-	public Produto(int codigoItem, String descricao, float valor, String unidade) {
+	public Produto(CodigoItem codigoItem, DescricaoItem descricao, PrecoItem valor, UnidadeMedida unidade) {
         this.codigoItem = codigoItem;
         this.descricao = descricao;
         this.valor = valor;
@@ -16,28 +16,28 @@ public class Produto {
 	
 	//getters and setter para os campos da classe
 	
-	public int getCodigoItem() {
+	public CodigoItem getCodigoItem() {
 		return codigoItem;
 	}
-	public void setCodigoItem(int codigoItem) {
+	public void setCodigoItem(CodigoItem codigoItem) {
 		this.codigoItem = codigoItem;
 	}
-	public String getDescricao() {
+	public DescricaoItem getDescricao() {
 		return descricao;
 	}
-	public void setDescricao(String descricao) {
+	public void setDescricao(DescricaoItem descricao) {
 		this.descricao = descricao;
 	}
-	public float getValor() {
+	public PrecoItem getPreco() {
 		return valor;
 	}
-	public void setValor(float valor) {
+	public void setPreco(PrecoItem valor) {
 		this.valor = valor;
 	}
-	public String getUnidade() {
+	public UnidadeMedida getUnidade() {
 		return unidade;
 	}
-	public void setUnidade(String unidade) {
+	public void setUnidade(UnidadeMedida unidade) {
 		this.unidade = unidade;
 	}
 
