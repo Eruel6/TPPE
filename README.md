@@ -26,7 +26,7 @@ O trabalho 2 foi realizar as refatorações propostas pelo professor, buscando o
 
 ## Trabalho 3
 
-O trabalho está localizado dentro da pasta tp3, seguindo as orientações do enunciado localizado (aqui)[https://github.com/andrelanna/fga0242/tree/master/tps/tp2]
+O trabalho está localizado dentro da pasta tp3, seguindo as orientações do enunciado localizado [aqui](https://github.com/andrelanna/fga0242/tree/master/tps/tp2)
 
 ### Participantes
 | Nome| GitHub| E-mail| 
