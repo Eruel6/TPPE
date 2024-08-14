@@ -2,7 +2,7 @@
 Repositório dedicado aos trabalhos da disciplina de técnicas de programação em plataformas emergentes na universidade de Brasília
 
 ## Trabalho 1
-O trabalho 1 da disciplina envolve a utilização de TDD para desenvolvimento de um sistema básico na linguagem JAVA, mais detalhes podem ser encontrados [aqui](https://github.com/andrelanna/fga0242/tree/master/TP).
+O trabalho 1 da disciplina envolve a utilização de TDD para desenvolvimento de um sistema básico na linguagem JAVA, mais detalhes podem ser encontrados [aqui](https://github.com/andrelanna/fga0242/tree/master/tps/tp1).
 
 ### Tecnologias utilizadas 
 Para a elaboração do trabalho 1 foram utilizados o JDK 21, Junit4 e o editor de texto eclipse.
@@ -19,6 +19,14 @@ Deve ser verificado se o projeto está configurado com o build path utilizando o
 
 #### Utilizando a "Main" (Eclipse)
 Para utilizar a main esta deve ser executada como um projeto Java, após isso o código deve rodar tranquilamente no terminal.
+
+## Trabalho 2 
+
+O trabalho 2 foi realizar as refatorações propostas pelo professor, buscando o aperfeiçoamento do projeto, as informações sobre as classes que foram refatoradas podem ser acessadas [aqui](https://github.com/andrelanna/fga0242/tree/master/tps/tp1), as refatorações feitas são as do grupo 9 na tabela. 
+
+## Trabalho 3
+
+O trabalho está localizado dentro da pasta tp3, seguindo as orientações do enunciado localizado (aqui)[https://github.com/andrelanna/fga0242/tree/master/tps/tp2]
 
 ### Participantes
 | Nome| GitHub| E-mail| 
